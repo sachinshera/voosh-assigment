@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "872b966f-4276-4cb7-a025-798c7323d18f",
+		"name": "Voosh Assgiment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26952884"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create new account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"sachin\",\n    \"email\":\"123@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/signup/email",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"signup",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE1NjAyNDg4LCJleHAiOjE3MTU4MTg0ODh9.JD0fINCZCcs15-xkjBuyjjzd0CzSqCau2drh3d_bCp8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"sachin\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Photo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE1NjA0NzE4LCJleHAiOjE3MTU4MjA3MTh9.j6YSGGUAKoEB__o_IFzA9G-ezmEc0_6BmMjGDcYq-Qo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/sachin/Downloads/AppIcons/appstore.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/users/photo",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Account With google",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"sachin\",\n    \"email\":\"sachsddsgsdfgdsgi3@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/users/signup/google",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"users",
+								"signup",
+								"google"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Self user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE1NjA0NzE4LCJleHAiOjE3MTU4MjA3MTh9.j6YSGGUAKoEB__o_IFzA9G-ezmEc0_6BmMjGDcYq-Qo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/users",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE1NjAyNDg4LCJleHAiOjE3MTU4MTg0ODh9.JD0fINCZCcs15-xkjBuyjjzd0CzSqCau2drh3d_bCp8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/users/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login with email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"123@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/email",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

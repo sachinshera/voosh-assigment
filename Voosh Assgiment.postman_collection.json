@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"sachin\",\n    \"email\":\"123@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n    \"name\":\"sachin\",\n    \"email\":\"1234@gmail.com\",\n    \"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -40,17 +40,21 @@
 				{
 					"name": "Update Details",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE1NjAyNDg4LCJleHAiOjE3MTU4MTg0ODh9.JD0fINCZCcs15-xkjBuyjjzd0CzSqCau2drh3d_bCp8",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"sachin\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n    \"name\":\"sachin\",\n    \"password\":\"123456\",\n    \"isPublic\":true,\n    \"email\": \"123@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,14 +76,18 @@
 				{
 					"name": "Update Photo",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE1NjA0NzE4LCJleHAiOjE3MTU4MjA3MTh9.j6YSGGUAKoEB__o_IFzA9G-ezmEc0_6BmMjGDcYq-Qo",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -137,14 +145,18 @@
 				{
 					"name": "Get Self user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE1NjA0NzE4LCJleHAiOjE3MTU4MjA3MTh9.j6YSGGUAKoEB__o_IFzA9G-ezmEc0_6BmMjGDcYq-Qo",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "{{local}}/users",
 							"host": [
@@ -160,22 +172,26 @@
 				{
 					"name": "get user by id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE1NjAyNDg4LCJleHAiOjE3MTU4MTg0ODh9.JD0fINCZCcs15-xkjBuyjjzd0CzSqCau2drh3d_bCp8",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{local}}/users/4",
+							"raw": "{{local}}/users/1",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"users",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -193,7 +209,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"123@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n    \"email\":\"1234@gmail.com\",\n    \"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

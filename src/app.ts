@@ -13,7 +13,7 @@ import { DB } from '@database';
 import { Routes } from '@interfaces/routes.interface';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
-
+import path from 'path';
 export class App {
   public app: express.Application;
   public env: string;
@@ -68,18 +68,28 @@ export class App {
   }
 
   private initializeSwagger() {
-    const options = {
-      swaggerDefinition: {
-        info: {
-          title: 'REST API',
-          version: '1.0.0',
-          description: 'Example docs',
-        },
-      },
-      apis: ['swagger.yaml'],
-    };
 
-    const specs = swaggerJSDoc(options);
+    let swaggerFile = path.join(__dirname, '../swagger.yml');
+    const specs = swaggerJSDoc({
+      swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+          title: 'Voosh API Assignment',
+          version: '1.0.0',
+          description: 'Voosh API Assignment',
+        },
+        servers: [
+          {
+            url: `http://localhost`,
+          },
+          {
+            url: `https://watchvideowith.me`,
+          },
+        ]
+      },
+      apis: [swaggerFile],
+    });
+
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
 

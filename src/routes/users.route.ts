@@ -25,22 +25,13 @@ export class UserRoute implements Routes {
   }
 
   private initializeRoutes() {
-
-    // get slef user
+   
     this.router.get(`${this.path}`, AuthMiddleware,this.user.getSlefusr);
-    // get user by id
     this.router.get(`${this.path}/:id`, AuthMiddleware, this.user.getUserByid);
-      // signup with email
     this.router.post(`${this.path}/signup/email`, ValidationMiddleware(CreateUserDto), this.user.createUser);
-    // signup with google
     this.router.get(`${this.path}/signup/google`, this.user.googleSignup);
-    // handle google signup callback
     this.router.get(`${this.path}/signup/google/callback`, this.user.googleSignupCallback);
-
-    // update user
-
     this.router.put(`${this.path}`, AuthMiddleware, ValidationMiddleware(UpdateUserDto), this.user.updateUser);
-    // update photo
     this.router.put(`${this.path}/photo`, AuthMiddleware, multer({ storage: this.storage }).single('photo'), this.user.updatePhoto);
   }
 }

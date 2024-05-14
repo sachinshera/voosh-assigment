@@ -73,7 +73,6 @@ export default function (sequelize: Sequelize): typeof UserModel {
     },
   );
 
-  UserModel.sync({alter: true });
 
   return UserModel;
 }

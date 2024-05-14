@@ -26,11 +26,12 @@ export class AuthController {
   // login with google
 
   public googleLogin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    let domainName = req.protocol + '://' + req.hostname;
     let scopes = [
       'https://www.googleapis.com/auth/userinfo.email',
       'https://www.googleapis.com/auth/userinfo.profile',
     ];
-    const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${this.GOOGLE_CLIENT_ID}&redirect_uri=${this.GOOGLE_REDIRECT_LOGIN_URI}&scope=${scopes.join(
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${this.GOOGLE_CLIENT_ID}&redirect_uri=${domainName+this.GOOGLE_REDIRECT_LOGIN_URI}&scope=${scopes.join(
       '%20'
     )}`;
 
@@ -39,12 +40,13 @@ export class AuthController {
 
   public googleLoginCallback = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
+      let domainName = req.protocol + '://' + req.hostname;
       const code = req.query.code;
       const { data } = await axios.post('https://oauth2.googleapis.com/token', {
       client_id: this.GOOGLE_CLIENT_ID,
       client_secret:this.GOOGLE_CLIENT_SECRET,
       code,
-      redirect_uri:this.GOOGLE_REDIRECT_LOGIN_URI,
+      redirect_uri:domainName+this.GOOGLE_REDIRECT_LOGIN_URI,
       grant_type: 'authorization_code',
     });
 

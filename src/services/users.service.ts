@@ -30,7 +30,10 @@ export class UserService {
     const findUser: User = await DB.Users.findOne({ where: { id: userId } });
     if (!findUser) throw new HttpException(409, `User with id ${userId} not found`);
     if(userData.password) userData.password = await hash(userData.password, 10);
-    if(userData.email) throw new HttpException(409, `You can't update email`);
+    if(userData.email) {
+      const findUser: User = await DB.Users.findOne({ where: { email: userData.email } });
+      if (findUser) throw new HttpException(409, `This email ${userData.email} already exists`);
+    }
     await DB.Users.update(userData, { where: { id: userId } });
     let data =  {
       id: userId,

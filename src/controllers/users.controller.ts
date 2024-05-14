@@ -75,11 +75,12 @@ export class UserController {
   // signup with google
 
   public googleSignup = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    let domainName = req.protocol + '://' + req.hostname;
     let scopes = [
       'https://www.googleapis.com/auth/userinfo.email',
       'https://www.googleapis.com/auth/userinfo.profile',
     ];
-    const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${this.GOOGLE_CLIENT_ID}&redirect_uri=${this.GOOGLE_REDIRECT_SIGNUP_URI}&scope=${scopes.join(
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${this.GOOGLE_CLIENT_ID}&redirect_uri=${domainName+this.GOOGLE_REDIRECT_SIGNUP_URI}&scope=${scopes.join(
       '%20'
     )}`;
 
@@ -90,12 +91,13 @@ export class UserController {
 
   public googleSignupCallback = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
+      let domainName = req.protocol + '://' + req.hostname;
       const code = req.query.code;
       const { data } = await axios.post('https://oauth2.googleapis.com/token', {
       client_id: this.GOOGLE_CLIENT_ID,
       client_secret:this.GOOGLE_CLIENT_SECRET,
       code,
-      redirect_uri:this.GOOGLE_REDIRECT_SIGNUP_URI,
+      redirect_uri:domainName+this.GOOGLE_REDIRECT_SIGNUP_URI,
       grant_type: 'authorization_code',
     });
 
@@ -119,8 +121,7 @@ export class UserController {
     try {
       const userId: number = req.user.id;
       // @ts-ignore
-     let file = req.file;
-     if(file==undefined){
+     if(req.file==undefined){
         let file = req.body.photo;
         if(file==undefined){
           throw new HttpException(400, 'No file uploaded');
@@ -128,7 +129,9 @@ export class UserController {
         const updateUser: User = await this.user.updatePhoto(userId, file);
         res.status(200).json(updateUser);
      }else{
-      const updateUser: User = await this.user.updatePhoto(userId, file.filename);
+      // @ts-ignore
+      let file = req.file;
+      const updateUser: User = await this.user.updatePhoto(userId, "images/"+file.filename);
       res.status(200).json(updateUser);
      }
     } catch (error) {

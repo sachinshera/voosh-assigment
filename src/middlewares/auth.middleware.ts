@@ -12,7 +12,7 @@ const getAuthorization = req => {
   if (coockie) return coockie;
 
   const header = req.header('Authorization');
-  if (header) return header;
+  if (header) return header.split('Bearer ')[1];
 
   return null;
 };

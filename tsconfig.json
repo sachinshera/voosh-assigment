@@ -26,7 +26,6 @@
       "@controllers/*": ["controllers/*"],
       "@database": ["database"],
       "@dtos/*": ["dtos/*"],
-      "@exceptions/*": ["exceptions/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@models/*": ["models/*"],

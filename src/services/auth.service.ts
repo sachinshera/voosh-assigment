@@ -2,7 +2,7 @@ import { AuthModelInterface } from './../interfaces/auth.interface';
 import { compare, hash } from 'bcrypt';
 import { sign, verify } from 'jsonwebtoken';
 import { Service } from 'typedi';
-import { HttpException } from '@/exceptions/httpException';
+import { HttpException } from './../exceptions/HttpException';
 import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
 import { AuthModel } from '@/models/auth.model';
 import { configDotenv } from 'dotenv';

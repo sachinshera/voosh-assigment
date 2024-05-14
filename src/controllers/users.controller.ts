@@ -1,3 +1,4 @@
+import { HttpException } from './../exceptions/HttpException';
 import { RequestWithUser } from '@interfaces/auth.interface';
 import { NextFunction, Request, Response } from 'express';
 import { Container } from 'typedi';
@@ -6,7 +7,6 @@ import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
 import { configDotenv } from 'dotenv';
 import axios from 'axios';
-import { HttpException } from '@/exceptions/httpException';
 configDotenv();
 export class UserController {
   public user = Container.get(UserService);

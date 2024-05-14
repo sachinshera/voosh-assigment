@@ -83,7 +83,7 @@ export class App {
             url: `http://localhost`,
           },
           {
-            url: `https://watchvideowith.me`,
+            url: `https://voosh.ncdn.in`,
           },
         ]
       },

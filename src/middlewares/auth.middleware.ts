@@ -2,7 +2,7 @@ import { NextFunction, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import { SECRET_KEY } from '@config';
 import { DB } from '@database';
-import { HttpException } from '@exceptions/httpException';
+import { HttpException } from './../exceptions/HttpException';
 import { DataStoredInToken, RequestWithUser } from '@interfaces/auth.interface';
 import { AuthService } from '@services/auth.service';
 import { Container } from 'typedi';
